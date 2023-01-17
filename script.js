@@ -27,7 +27,7 @@ window.ethereum.enable().then(() => {
                 localStorage.setItem("connected", "true");
                 localStorage.setItem("address", address);
                 // Change the button text to the user's Ethereum address
-                document.getElementById("connect-button").innerHTML = `Connected as ${address}`;
+                document.getElementById("connect-button").innerHTML = `${address}`;
             });
         } else {
                     // The user is not connected to the Polygon network
@@ -101,7 +101,7 @@ window.ethereum.on("accountsChanged", accounts => {
         localStorage.removeItem("connected");
         localStorage.removeItem("address");
         // Change the button text to "Connect"
-        document.getElementById("connect-button").innerHTML = "Connect";
+        document.getElementById("connect-button").innerHTML = "Connect Wallet";
     }
 });
 
@@ -118,5 +118,5 @@ disconnectButton.addEventListener("click", () => {
     localStorage.removeItem("connected");
     localStorage.removeItem("address");
     // Change the button text to "Connect"
-    document.getElementById("connect-button").innerHTML = "Connect";
+    document.getElementById("connect-button").innerHTML = "Connect Wallet";
 });
