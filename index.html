@@ -6,9 +6,13 @@
 </head>
 <body>
     <nav>
-        <div id="message"></div>
         <div id="connect-button-container" style="float:right">
-            <button id="connect-button" class="connect-button">Connect Wallet</button>
+            <div class="dropdown">
+                <button id="connect-button" class="connect-button">Connect Wallet</button>
+                <div class="dropdown-content" id="dropdown">
+                    <a href="#" id="disconnect-button">Disconnect</a>
+                </div>
+            </div>
         </div>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>

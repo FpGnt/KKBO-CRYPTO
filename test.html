@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Authorization</title>
+</head>
+<body>
+    <button id="login-button">Login</button>
+    <button id="secret-button" disabled>Get Secret Message</button>
+
+    <script>
+        const loginButton = document.getElementById("login-button");
+        const secretButton = document.getElementById("secret-button");
+
+        loginButton.addEventListener("click", () => {
+            // Send login request to server
+            fetch("http://localhost:3000/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    username: "myuser",
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                // Save token to local storage
+                localStorage.setItem("token", data.token);
+                // Enable secret button
+                secretButton.disabled = false;
+            });
+        });
+
+        secretButton.addEventListener("click", () => {
+            // Get token from local storage
+            const token = localStorage.getItem("token");
+
+            // Send request to get secret message
+            fetch("http://localhost:3000/secret", {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.message);
+                // Output: "This is a secret message"
+            });
+        });
+    </script>
+</body>
+</html>
