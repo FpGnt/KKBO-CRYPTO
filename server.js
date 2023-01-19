@@ -2,11 +2,23 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const secret = 'mysecretkey';
+const cookieParser = require("cookie-parser");
+const sessions = require('express-session');
+
+var db = require('./database.js');
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+
+const oneDay = 1000 * 60 * 60 * 1;
+app.use(sessions({
+    secret: secret,
+    saveUninitialized:true,
+    cookie: { maxAge: 600000 },
+    resave: false 
+}));
 
 // Sample API endpoint that requires authentication
 app.get('/secret', authenticateToken, (req, res) => {
@@ -38,6 +50,7 @@ app.post('/login', (req, res) => {
     // Create and assign token
     const token = jwt.sign({ id: user.id }, secret);
     res.json({ token });
+    db.Insert_connections(req.body.username, token)
 });
 
 // Dummy function to authenticate user
