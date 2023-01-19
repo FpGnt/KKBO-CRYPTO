@@ -2,7 +2,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const secret = 'mysecretkey';
-const cookieParser = require("cookie-parser");
+//const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 
 var db = require('./database.js');
