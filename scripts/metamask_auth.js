@@ -169,7 +169,8 @@ window.ethereum.enable().then(() => {
                                                 // Save token to local storage
                                                 localStorage.setItem("token", data.token);
                                             });
-
+                                            localStorage.setItem("connected", "true");
+                                            localStorage.setItem("address", address);
                                             
                                             // Change the button text to the user's Ethereum address
                                             const shortenedAddress = address.substring(0, 4) + "..." + address.substr(-5);
@@ -510,3 +511,10 @@ if (address !== undefined){
                
         });
     }
+    window.ethereum.on('disconnect', (error) => {
+        localStorage.removeItem("connected");
+        localStorage.removeItem("address");
+        localStorage.removeItem("token");
+        document.getElementById("connect-button").innerHTML = "Connect Wallet";
+        location.reload();    
+    });
