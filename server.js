@@ -5,7 +5,7 @@ const secret = 'mysecretkey';
 //const cookieParser = require("cookie-parser");
 const sessions = require('express-session');
 
-var db = require('./database.js');
+var db = require('./scripts/database.js');
 
 const app = express();
 
