@@ -305,7 +305,7 @@ window.ethereum.enable().then(() => {
 
 // Add a event listener for the "accountsChanged" event
 if (window.ethereum && localStorage.getItem("connected") === "true") {
-    window.ethereum.on('networkChanged', function () {
+    window.ethereum.on('chainChanged', function () {
         const web3 = new Web3(window.ethereum);
         web3.eth.net.getId().then(networkId => {
             if (networkId !== 137) {
