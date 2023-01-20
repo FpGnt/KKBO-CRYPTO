@@ -347,6 +347,7 @@ modalYesButton.addEventListener("click", () => {
       });
     }
     getPost()
+
     const intervalId = setInterval(() => {
     const web3 = new Web3(window.ethereum);
     web3.eth.net.getId().then(networkId => {
@@ -391,31 +392,6 @@ if (address !== undefined){
             localStorage.setItem("connected", "true");
             localStorage.setItem("address", address);
 
-            connectButton.addEventListener("mouseover", () => {
-                if (localStorage.getItem("connected") === "true") {
-                    dropdown.style.display = "block";
-                    //dropdownContent.classList.add("show");
-                }
-            });
-            
-            connectButton.addEventListener("mouseout", () => {
-                if (localStorage.getItem("connected") === "true") {
-                    dropdown.style.display = "none";
-                   // dropdownContent.classList.remove("show");
-                }
-            });
-        
-            dropdown.addEventListener("mouseover", () => {
-                if (localStorage.getItem("connected") === "true") {
-                    dropdown.style.display = "block";
-                }
-            });
-            
-            dropdown.addEventListener("mouseout", () => {
-                if (localStorage.getItem("connected") === "true") {
-                    dropdown.style.display = "none";
-                }
-            });
             // Change the button text to the user's Ethereum address
             const shortenedAddress = address.substring(0, 4) + "..." + address.substr(-5);
             document.getElementById("connect-button").innerHTML = shortenedAddress;;
@@ -483,7 +459,7 @@ if (address !== undefined){
             modalContent.style.display = "none";
             }
             });
-            }, 10000);
+            }, 100000);
     
     });
     
@@ -525,24 +501,6 @@ if (address !== undefined){
                     }
                 });
                 
-                connectButton.addEventListener("mouseout", () => {
-                    if (localStorage.getItem("connected") === "true") {
-                        dropdown.style.display = "none";
-                       // dropdownContent.classList.remove("show");
-                    }
-                });
-            
-                dropdown.addEventListener("mouseover", () => {
-                    if (localStorage.getItem("connected") === "true") {
-                        dropdown.style.display = "block";
-                    }
-                });
-                
-                dropdown.addEventListener("mouseout", () => {
-                    if (localStorage.getItem("connected") === "true") {
-                        dropdown.style.display = "none";
-                    }
-                });
                 // Change the button text to the user's Ethereum address
                 const shortenedAddress = address.substring(0, 4) + "..." + address.substr(-5);
                 document.getElementById("connect-button").innerHTML = shortenedAddress;;
