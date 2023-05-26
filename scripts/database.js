@@ -1,10 +1,10 @@
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-  host: "server42.areait.lv",
-  user: "kkbopro_automation",
-  password: "+FnQDPmAg7$D",
-  database: "kkbopro_crypto"
+  host: "",
+  user: "",
+  password: "",
+  database: ""
 });
 
 function Insert_connections(address, token){
